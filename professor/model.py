@@ -1,17 +1,18 @@
-from dados import dados
-dadosProfessores = dados['professores']
+from dbProfessor import Professor
+from config import db
 
 class ProfessorNaoEncontrado(Exception):
     pass
 
 def getListProfessor():
-    return dadosProfessores
+    professores = Professor.query.all()
+    return [professor.to_dict() for professor in professores]
 
 def getProfessorById(idProfessor):
-    for professor in dadosProfessores:
-        if professor['id'] == idProfessor:
-            return professor
-    raise ProfessorNaoEncontrado
+    professor = Professor.query.get(idProfessor)
+    if not professor:
+        raise ProfessorNaoEncontrado
+    return professor.to_dict()
 
 def validaProfessorExist(idProfessor):
     try:
@@ -21,22 +22,22 @@ def validaProfessorExist(idProfessor):
         return False
 
 def addProfessor(dict):
-    dadosProfessores.append(dict)
+    novoProfessor = Professor(nome = dict['nome'], idade = dict['idade'], materia = dict['materia'], observacoes = dict['observacoes'])
+    db.session.add(novoProfessor)
+    db.session.commit()
 
 def updateProfessorById(idProfessor, dict):
     validacao = validaProfessorExist(idProfessor)
     if validacao is True:
-        for professor in dadosProfessores:
-            if professor['id'] == idProfessor:
-                professor.update(dict)
-                break
+        professor = Professor(nome = dict['nome'], idade = dict['idade'], materia = dict['materia'], observacoes = dict['observacoes'])
+        db.session.commit()
     else:
         raise ProfessorNaoEncontrado
 
 def deleteProfessorById(idProfessor):
-    validacao = validaProfessorExist(idProfessor)
-    if validacao is True:
-        professor = getProfessorById(idProfessor)
-        dadosProfessores.remove(professor)
-    else:
+    professor = getProfessorById(idProfessor)
+    if not professor:
         raise ProfessorNaoEncontrado
+    db.session.delete(aluno)
+    db.session.commit()
+  
