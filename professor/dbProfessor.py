@@ -14,4 +14,10 @@ class Professor(db.Model):
         self.observacoes = observacoes
 
     def to_dict(self):
-        return {'id': self.id, 'nome': self.nome, 'idade': self.idade, 'materia': self.materia, 'observacoes': self.observacoes}
+        return {
+            'id': self.id, 
+            'nome': self.nome, 
+            'idade': self.idade, 
+            'materia': self.materia, 
+            'observacoes': self.observacoes
+        }
