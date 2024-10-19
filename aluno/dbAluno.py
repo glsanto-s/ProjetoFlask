@@ -4,7 +4,7 @@ class Aluno(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100))
     idade = db.Column(db.Integer)
-    turma = db.Column(db.String(100))
+    turma = db.Column(db.Integer, unique=True)
     data_nascimento = db.Column(db.Integer)
     nota_primeiroSemestre = db.Column(db.Integer)
     nota_segundoSemestre = db.Column(db.Integer)

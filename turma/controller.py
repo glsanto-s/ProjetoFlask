@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from. model import *
+from .model import *
 
 turma_blueprint = Blueprint('turmas', __name__ )
 
@@ -7,7 +7,7 @@ turma_blueprint = Blueprint('turmas', __name__ )
 def getTurma():
     return jsonify(getListTurma())
 
-@turma_blueprint.royute('/turma/<int:idTurma>', methods=['GET'])
+@turma_blueprint.route('/turma/<int:idTurma>', methods=['GET'])
 def buscarTurma(idTurma):
     try:
         Turma = getTurmaById(idTurma)

@@ -5,12 +5,12 @@ alunos_blueprint = Blueprint('alunos', __name__)
 
 @alunos_blueprint.route('/alunos', methods=['GET'])
 def get_alunos():
-    return jsonify(listar_alunos())
+    return jsonify(getlistarAlunos())
 
 @alunos_blueprint.route('/aluno/<int:id_aluno>', methods=['GET'])
 def get_aluno(id_aluno):
     try:
-        aluno = aluno_por_id(id_aluno)
+        aluno = getAlunoByid(id_aluno)
         return jsonify(aluno)
     except AlunoNaoEncontrado:
         return jsonify({'message': 'Aluno não encontrado'}), 404
@@ -23,10 +23,10 @@ def create_aluno():
     return jsonify(data), 201
 
 @alunos_blueprint.route('/aluno/<int:id_aluno>', methods=['PUT'])
-def update_aluno(id_aluno):
+def atualizar_aluno(id_aluno):
     data = request.json
     try:
-        atualizar_aluno(id_aluno, data)
+        update_aluno(id_aluno, data)
         return jsonify(aluno_por_id(id_aluno))
     except AlunoNaoEncontrado:
         return jsonify({'message': 'Aluno não encontrado'}), 404
