@@ -1,4 +1,3 @@
-import os
 from .dbTurma import Turma
 from config import db
 from professor.model import *
@@ -7,9 +6,8 @@ class TurmaNaoEncontrada(Exception):
     pass
 
 def getListTurma():
-    getListProfessor()
-    turma = Turma.query.all()
-    return [turma.to_dict() for turma in turma]
+    turmas = Turma.query.all()
+    return [turma.to_dict() for turma in turmas]
 
 def getTurmaById(idturma):
     turma = Turma.query.get(idturma)
@@ -23,7 +21,6 @@ def addTurma(dict):
         raise ProfessorNaoEncontrado
 
     novaTurma= Turma(
-        id=dict['id'],
         descricao=dict['descricao'], 
         professor=dict['professor'],
         ativo=dict['ativo'])
@@ -35,14 +32,14 @@ def atualizacaoTurmaById(idTurma,dict):
     if not turma:
         raise TurmaNaoEncontrada
     if dict.get('descricao') is not None:
-        turma.nome = dict['descricao'] 
+        turma.descricao = dict['descricao'] 
     if dict.get('professor') is not None:
         professor = getProfessorById(dict['professor'])
         if not professor:
             raise ProfessorNaoEncontrado
-        turma.nome = dict['professor'] 
+        turma.professor = dict['professor'] 
     if dict.get('ativo') is not None:
-        turma.nome = dict['ativo'] 
+        turma.ativo = dict['ativo'] 
     db.session.commit ()
 
     

@@ -13,7 +13,7 @@ def getAlunoByid(id_aluno):
 
 def getlistarAlunos():
     alunos = Aluno.query.all()
-    return [Aluno.to_dict() for aluno in alunos]
+    return [aluno.to_dict() for aluno in alunos]
 
 def adicionar_aluno(dict):
     turma = getTurmaById(dict['turma'])
@@ -52,6 +52,8 @@ def updateAlunoById(id_aluno, dict):
         aluno.nota_segundoSemestre = dict['nota_segundoSemestre']
     if dict.get('nota_final') is not None:
         aluno.nota_final = dict['nota_final']
+    
+    db.session.commit()
     
 def excluir_aluno(id_aluno):
     aluno = getAlunoByid(id_aluno)

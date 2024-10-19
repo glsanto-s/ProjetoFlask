@@ -3,7 +3,7 @@ from .model import *
 
 turma_blueprint = Blueprint('turmas', __name__ )
 
-@turma_blueprint.route('/turma', methods=['GET'])
+@turma_blueprint.route('/turmas', methods=['GET'])
 def getTurma():
     return jsonify(getListTurma())
 
@@ -17,18 +17,23 @@ def buscarTurma(idTurma):
     
 @turma_blueprint.route('/turma',methods=['POST'])
 def adicionarTurma():
-    data = request.json
-    addTurma(data)
-    return jsonify(data), 201
+    try: 
+        data = request.json
+        addTurma(data)
+        return jsonify(data), 201
+    except ProfessorNaoEncontrado:
+        return jsonify({'message': 'Professor não localizado na base!'}),404
 
 @turma_blueprint.route('/turma/<int:idTurma>', methods= ['PUT'])
-def atu(idTurma):
+def updateTurma(idTurma):
     data = request.json
     try:
         atualizacaoTurmaById(idTurma,data)
         return jsonify(getTurmaById(idTurma))
     except TurmaNaoEncontrada:
         return jsonify({'message': 'Turma não lozalizada na base!'}), 404
+    except ProfessorNaoEncontrado:
+        return jsonify({'message': 'Professor não localizado na base!'}), 404
                         
 @turma_blueprint.route('/turma/<int:idTurma>', methods=['DELETE'])
 def deleteTurma(idTurma):

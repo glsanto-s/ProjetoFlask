@@ -6,8 +6,7 @@ class Turma(db.Model):
     professor = db.Column(db.Integer, unique=True)
     ativo = db.Column(db.String(100))
 
-    def __init__(self, id , descricao , professor, ativo):
-        self.id = id
+    def __init__(self , descricao , professor, ativo):
         self.descricao = descricao
         self.professor = professor
         self.ativo = ativo
