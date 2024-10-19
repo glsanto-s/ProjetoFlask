@@ -1,9 +1,11 @@
 from config import app, db
 from professor.controller import professores_blueprint
 from turma.controller import turma_blueprint
+from aluno.controller import alunos_blueprint
 
 app.register_blueprint(professores_blueprint)
 app.register_blueprint(turma_blueprint)
+app.register_blueprint(alunos_blueprint)
 
 with app.app_context():
     db.create_all()

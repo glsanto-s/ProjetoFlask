@@ -1,3 +1,4 @@
 __pycache__
 ./professor/__pycache__
-instance
+./turma/__pycache__
+./aluno/__pycache__
