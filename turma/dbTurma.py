@@ -3,7 +3,7 @@ from config import db
 class Turma(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     descricao = db.Column(db.String(100))
-    professor = db.Column(db.Integer, unique=True)
+    professor = db.Column(db.Integer)
     ativo = db.Column(db.String(100))
 
     def __init__(self , descricao , professor, ativo):
