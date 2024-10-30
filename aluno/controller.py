@@ -1,11 +1,15 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template,redirect, url_for
 from .alunos_model import *
 
 alunos_blueprint = Blueprint('alunos', __name__)
 
+@alunos_blueprint.route('/', methods=['GET'])
+def getIndex():
+    return "Meu index"
+
 @alunos_blueprint.route('/alunos', methods=['GET'])
 def get_alunos():
-    alunos = listar_alunos()
+    alunos = getlistarAlunos()
     return render_template("alunos.html", alunos=alunos)
 
 @alunos_blueprint.route('/aluno/<int:id_aluno>', methods=['GET'])
@@ -19,6 +23,9 @@ def get_aluno(id_aluno):
     except AlunoNaoEncontrado:
         return jsonify({'message': 'Aluno não encontrado'}), 404
     
+@alunos_blueprint.route('/alunos/adicionar', methods=['GET'])
+def adicionar_aluno_page():
+    return render_template('criarAlunos.html')
 
 @alunos_blueprint.route('/aluno', methods=['POST'])
 def create_aluno():
@@ -26,7 +33,7 @@ def create_aluno():
         nome = request.form['nome']
         novo_aluno = {'nome': nome}
         adicionar_aluno(novo_aluno)
-        return redirect(url_for('alunos.get_alunos')), 201
+        return redirect(url_for('alunos.get_alunos'))
     except TurmaNaoEncontrada:
         return jsonify({'message': 'Turma não localizada na base!'}),404
 

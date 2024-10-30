@@ -14,6 +14,24 @@
     <input type="hidden" name="_method" value="PUT">
     <label for="nome">Nome:</label>
     <input type="text" id="nome" name="nome" value="{{ aluno.nome }}">
+
+    <label for="idade">Idade:</label><br>
+    <input type="number" id="idade" name="idade" value="{{aluno.idade}}">
+
+    <label for="turma">Turma:</label><br>
+    <input type="number" id="turma" name="turma" value="{{aluno.turma}}">
+
+    <label for="data_nascimento">data de nascimento:</label><br>
+    <input type="date" id="data_nascimento" name="data_nascimento" value="{{aluno.data_nascimento}}">
+
+    <label for="nota_primeiroSemestre">Nota Primeiro Semestre:</label><br>
+    <input type="number" id="nota_primeiroSemestre" name="nota_primeiroSemestre" value="{{aluno.nota_primeiroSemestre}}">
+    <label for="nota_segundoSemestre">Nota Segundo Semestre:</label><br>
+    <input type="number" id="nota_segundoSemestre" name="nota_segundoSemestre" value="{{aluno.nota_segundoSemestre}}">
+    <label for="nota_final">Nota Final:</label><br>
+    <input type="number" id="nota_final" name="nota_final" value="{{aluno.nota_final}}">
+
+
     <button type="submit">Atualizar</button>
   </form>
 </body>

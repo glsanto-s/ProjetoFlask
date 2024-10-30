@@ -1,7 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<form action="{{ url_for('alunos.create_aluno') }}" method="POST">
-    <input type="text" name="nome" placeholder="Nome do aluno">
-    <button type="submit">Adicionar Aluno</button>
-</form>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Aluno</title>
+</head>
+
+<body>
+  <h1>Adicionar Aluno</h1>
+  <form action="{{ url_for('alunos.create_aluno') }}" method="post">
+    <label for="nome">Nome:</label><br>
+    <input type="text" id="nome" name="nome"><br>
+    <label for="idade">Idade:</label><br>
+    <input type="number" id="idade" name="idade"><br>
+    <label for="turma">Turma:</label><br>
+    <input type="number" id="turma" name="turma"><br>
+    <label for="data_nascimento">data de nascimento:</label><br>
+    <input type="date" id="data_nascimento" name="data_nascimento"><br>
+    <label for="nota_primeiroSemestre">Nota Primeiro Semestre:</label><br>
+    <input type="number" id="nota_primeiroSemestre" name="nota_primeiroSemestre"><br>
+    <label for="nota_segundoSemestre">Nota Segundo Semestre:</label><br>
+    <input type="number" id="nota_segundoSemestre" name="nota_segundoSemestre"><br>
+    <label for="nota_final">Nota Final:</label><br>
+    <input type="number" id="nota_final" name="nota_final"><br>
+
+
+    <input type="submit" value="Adicionar Aluno">
+  </form>
+</body>
+
+</html>
