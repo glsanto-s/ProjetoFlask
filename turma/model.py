@@ -48,7 +48,7 @@ def excluirTurmaById(idturma):
     if not turma:
         raise TurmaNaoEncontrada
     db.session.delete(turma)
-    db.session.comit()
+    db.session.commit()
     
 
 

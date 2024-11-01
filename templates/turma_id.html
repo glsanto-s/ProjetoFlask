@@ -7,16 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalhes da Turma</title>
 </head>
-<a href="{{url_for('turma.getTurma')}}">Voltar...</a>
 <body>
   <h1>Detalhes da Turma</h1>
+  <a href="{{url_for('turmas.getTurma')}}">Voltar...</a>
+  <br><br>
   <p><strong>ID:</strong> {{ turma.id }}</p>
   <p><strong>Descrição:</strong> {{ turma.descricao }}</p>
   <p><strong>Professor:</strong> {{ turma.professor }}</p>
-  <p><strong>Ativo:  </strong> '{{ turma.ativo}}'</p>
-
-  
-  
+  <p><strong>Ativo:  </strong> {{ turma.ativo}}</p> 
 
   <style>
     .form-inline {

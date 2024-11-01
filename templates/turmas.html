@@ -8,11 +8,11 @@
 
 <body>
   <h1>Lista de Turmas</h1>
-  <a href="{{url_for('turma.adicionarTurmaPage')}}"><button>Adicionar Turma</button></a>
+  <a href="{{url_for('turmas.adicionarTurmaPage')}}"><button>Adicionar Turma</button></a>
   <ul>
     {% for turma in turmas %}
     <li>
-    (Descrição: {{ turma.descricao }}) (ativo: {{ turma.ativo }})
+    Descrição: {{ turma.descricao }} | Ativo: {{ turma.ativo }}
     </li>
     <a href="{{url_for('turmas.buscarTurma', idTurma=turma.id)}}"><button>Detalhes</button></a>
     {% endfor %}

@@ -22,7 +22,7 @@ def buscarTurma(idTurma):
 
 @turma_blueprint.route('/turma/adicionar', methods=['GET'])
 def adicionarTurmaPage():
-    return render_template('turmas_criar.html')
+    return render_template('turma_criar.html')
 
 @turma_blueprint.route('/turma',methods=['POST'])
 def adicionarTurma():
@@ -43,8 +43,8 @@ def adicionarTurma():
 @turma_blueprint.route('/turma/<int:idTurma>/alterar',methods=['POST'])
 def updateTurmasPage(idTurma):
     try:
-        turma = getProfessorById(idTurma)
-        return render_template('turmas_editar.html',turma=turma)
+        turma = getTurmaById(idTurma)
+        return render_template('turma_editar.html',turma=turma)
     except TurmaNaoEncontrada:
         return jsonify({'message': 'Turma não localizada na base!'}), 404
     
