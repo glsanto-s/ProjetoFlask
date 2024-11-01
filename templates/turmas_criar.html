@@ -1,17 +1,18 @@
+<!-- adicionar_aluno.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atualizar Turma</title>
+  <title>Adicionar Turma</title>
 </head>
 
 <body>
-  <h1>Atualizar Turma</h1>
-  <form action="{{ url_for('turmas.update_turma', id_turma=turma.id) }}" method="POST">
-    <!-- Altere o método de envio para PUT -->
-    <input type="hidden" name="_method" value="PUT">
+  <h1>Adicionar Turma</h1>
+  <a href="{{url_for('turmas.getTurma')}}">Voltar...</a>
+  <br><br>
+  <form action="{{ url_for('turmas.adicionarTurma') }}" method="post">
     <label for="descricao">Descrição:</label><br>
     <input type="text" id="descricao" name="descricao" required><br>
     
@@ -22,7 +23,7 @@
     <input type="text" id="ativo" name="ativo" required><br>
     
    <br>
-    <button type="submit">Atualizar</button>
+    <input type="submit" value="Adicionar Turma">
   </form>
 </body>
 

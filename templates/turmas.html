@@ -8,13 +8,13 @@
 
 <body>
   <h1>Lista de Turmas</h1>
+  <a href="{{url_for('turma.adicionarTurmaPage')}}"><button>Adicionar Turma</button></a>
   <ul>
     {% for turma in turmas %}
     <li>
-      <a href="{{ url_for('turmas.get_turma', id_turma=turma.id) }}">
-        (ID: {{ turma.id }}) (Descrição: {{ turma.descricao }}) (Professor: {{ turma.professor }})(ativo: {{ turma.ativo }})
-      </a>
+    (Descrição: {{ turma.descricao }}) (ativo: {{ turma.ativo }})
     </li>
+    <a href="{{url_for('turmas.buscarTurma', idTurma=turma.id)}}"><button>Detalhes</button></a>
     {% endfor %}
   </ul>
 </body>
