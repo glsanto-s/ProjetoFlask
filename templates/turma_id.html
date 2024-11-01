@@ -1,0 +1,35 @@
+<!-- detalhes_aluno.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes da Turma</title>
+</head>
+<body>
+  <h1>Detalhes da Turma</h1>
+  <a href="{{url_for('turmas.getTurma')}}">Voltar...</a>
+  <br><br>
+  <p><strong>ID:</strong> {{ turma.id }}</p>
+  <p><strong>Descrição:</strong> {{ turma.descricao }}</p>
+  <p><strong>Professor:</strong> {{ turma.professor }}</p>
+  <p><strong>Ativo:  </strong> {{ turma.ativo}}</p> 
+
+  <style>
+    .form-inline {
+      display: inline-block;
+      margin-right: 10px; /* Ajuste o espaçamento conforme necessário */
+    }
+  </style>
+  <form id="update-form" action="{{ url_for('turmas.updateTurmasPage', idTurma=turma.id) }}" method="post" class="form-inline">
+    <button type="submit">Editar Turma</button>
+  </form>
+  
+  <form id="delete-form" action="{{ url_for('turmas.deleteTurma', idTurma=turma.id) }}" method="POST" class="form-inline">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit">Excluir Turma</button>
+  </form>
+</body>
+
+</html>
