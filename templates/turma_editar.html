@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atualizar Turma</title>
+</head>
+
+<body>
+  <h1>Atualizar Turma</h1>
+  <a href="{{url_for('turmas.buscarTurma', idTurma=turma.id)}}">Voltar...</a>
+    <br><br>
+  <form action="{{ url_for('turmas.updateTurma', idTurma=turma.id) }}" method="POST">
+    <!-- Altere o método de envio para PUT -->
+    <input type="hidden" name="_method" value="PUT">
+    <label for="descricao">Descrição:</label><br>
+    <input type="text" id="descricao" value="{{turma.descricao}}" name="descricao" required><br>
+    
+    <label for="professor">Professor:</label><br>
+    <input type="number" id="professor" name="professor"value="{{turma.professor}}" required><br>
+    
+    <label for="ativo">Ativo:</label><br>
+    <input type="text" id="ativo" value="{{turma.ativo}}"name="ativo" required><br>
+    
+    <br>
+    <input type="hidden" name="_method" value="PUT">
+    <input type="submit" name="atualizar" id="atualizar" value="Atualizar">
+  </form>
+</body>
+
+</html>
