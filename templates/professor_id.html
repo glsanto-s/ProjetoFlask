@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Detalhes do Professor</h1>
-    <a href="{{url_for('professores.getProfessor')}}">Voltar...</a>
+    <a href="{{url_for('professores.getIndex')}}"><button>Início</button></a>
     <br>
     <p><strong>Id:</strong> {{professor.id}}</p>
     <p><strong>Nome:</strong> {{professor.nome}}</p>
@@ -15,10 +15,17 @@
     <p><strong>Matéria:</strong> {{professor.materia}}</p>
     <p><strong>Observações:</strong> {{professor.observacoes}}</p>
 
-    <form action="{{url_for('professores.updateProfessorPage', idProfessor=professor.id)}}" method="post">
+    <style>
+        .form-inline {
+          display: inline-block;
+          margin-right: 10px;
+        }
+      </style>
+
+    <form action="{{url_for('professores.updateProfessorPage', idProfessor=professor.id)}}" method="post" class="form-inline">
         <button type="submit">Editar</button>
     </form>
-    <form action="{{url_for('professores.deleteProfessor', idProfessor=professor.id)}}" method="post">
+    <form action="{{url_for('professores.deleteProfessor', idProfessor=professor.id)}}" method="post" class="form-inline">
         <input type="hidden" name="_method" value="DELETE">
         <button type="submit">Excluir</button>
     </form>

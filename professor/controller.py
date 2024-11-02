@@ -5,7 +5,7 @@ professores_blueprint = Blueprint('professores', __name__)
 
 @professores_blueprint.route('/', methods=['GET'])
 def getIndex():
-    return "Meu index"
+    return render_template('index.html')
 
 @professores_blueprint.route('/professores', methods=['GET'])
 def getProfessor():

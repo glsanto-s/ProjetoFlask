@@ -8,6 +8,7 @@
 
 <body>
   <h1>Lista de Turmas</h1>
+  <a href="{{url_for('turmas.getIndex')}}"><button>Início</button></a>
   <a href="{{url_for('turmas.adicionarTurmaPage')}}"><button>Adicionar Turma</button></a>
   <ul>
     {% for turma in turmas %}

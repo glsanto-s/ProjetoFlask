@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Lista de Professores</h1>
+    <a href="{{url_for('professores.getIndex')}}"><button>Início</button></a>
     <a href="{{url_for('professores.adicionarProfessorPage')}}"><button>Adicionar Professor</button></a>
     <ul>
         {% for professor in professores %}

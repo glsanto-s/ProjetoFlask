@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Alunos</title>
+</head>
+
+<body>
+  <h1>Lista de Alunos</h1>
+  <a href="{{url_for('alunos.getIndex')}}"><button>Início</button></a>
+  <a href="{{url_for('alunos.adicionarAlunoPage')}}"><button>Adicionar Aluno</button></a>
+  <ul>
+    {% for aluno in alunos %}
+    <li>ID: {{ aluno.id }} | Nome: {{ aluno.nome }}</li>
+    <a href="{{url_for('alunos.get_aluno', id_aluno=aluno.id)}}"><button>Detalhes</button></a>
+    {% endfor %}
+  </ul>
+</body>
+
+</html>

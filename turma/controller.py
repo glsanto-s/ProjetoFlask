@@ -5,7 +5,7 @@ turma_blueprint = Blueprint('turmas', __name__ )
 
 @turma_blueprint.route('/', methods=['GET'])
 def getIndex():
-    return "Meu index"
+    return render_template('index.html')
 
 @turma_blueprint.route('/turmas', methods=['GET'])
 def getTurma():
