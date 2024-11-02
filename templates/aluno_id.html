@@ -1,25 +1,42 @@
 <!-- detalhes_aluno.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Aluno</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalhes do Aluno</title>
-</head>
+  <body>
+    <h1>Detalhes do Aluno</h1>
+    <a href="{{url_for('alunos.getIndex')}}"><button>Início</button></a>
+    <br>
+    <p><strong>ID:</strong> {{ aluno.id }}</p>
+    <p><strong>Nome:</strong> {{ aluno.nome }}</p>
+    <p><strong>Idade:</strong> {{ aluno.idade }}</p>
+    <p><strong>Turma:</strong> {{ aluno.turma }}</p>
+    <p><strong>Data de Nascimento:</strong> {{ aluno.data_nascimento }}</p>
+    <p><strong>Nota Primeiro Semestre:</strong> {{ aluno.nota_primeiroSemestre }}</p>
+    <p><strong>Nota Segundo Semestre:</strong> {{ aluno.nota_segundoSemestre }}</p>
+    <p><strong>Nota Final:</strong> {{ aluno.nota_final }}</p>
+    
+    <style>
+      .form-inline {
+        display: inline-block;
+        margin-right: 10px; /* Ajuste o espaçamento conforme necessário */
+      }
+    </style>
 
-<body>
-  <h1>Detalhes do Aluno</h1>
-  <p><strong>ID:</strong> {{ aluno.id }}</p>
-  <p><strong>Nome:</strong> {{ aluno.nome }}</p>
-
-  <form id="delete-form" action="{{ url_for('alunos.delete_aluno', id_aluno=aluno.id) }}" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <button type="submit">Excluir Aluno</button>
-  </form>
-  <a href="{{ url_for('alunos.get_alunos') }}">Voltar para a lista de alunos</a>
-
-
-</body>
-
+    <form
+      action="{{url_for('alunos.atualizarAlunoPage', id_aluno=aluno.id)}}"
+      method="post" class="form-inline">
+      <button type="submit">Editar</button>
+    </form>
+    <form
+      action="{{url_for('alunos.delete_aluno', id_aluno=aluno.id)}}"
+      method="post"  class="form-inline">
+      <input type="hidden" name="_method" value="DELETE" />
+      <button type="submit">Excluir</button>
+    </form>
+  </body>
 </html>

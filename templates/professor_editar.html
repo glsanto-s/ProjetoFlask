@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Atualizar Professor</h2>
-    <a href="{{url_for('professores.buscarProfessor', idProfessor=professor.id)}}">Voltar...</a>
+    <a href="{{url_for('professores.getIndex')}}"><button>Início</button></a>
     <br><br>
     <form action="{{url_for('professores.updateProfessor', idProfessor=professor.id)}}" method="post">
         <label for="nome">Nome: </label>

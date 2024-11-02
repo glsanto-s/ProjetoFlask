@@ -56,7 +56,7 @@ def updateAlunoById(id_aluno, dict):
     db.session.commit()
     
 def excluir_aluno(id_aluno):
-    aluno = getAlunoByid(id_aluno)
+    aluno = Aluno.query.get(id_aluno)
     if not aluno:
         raise AlunoNaoEncontrado
     db.session.delete(aluno)

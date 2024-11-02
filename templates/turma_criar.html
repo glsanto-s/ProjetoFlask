@@ -10,7 +10,7 @@
 
 <body>
   <h1>Adicionar Turma</h1>
-  <a href="{{url_for('turmas.getTurma')}}">Voltar...</a>
+  <a href="{{url_for('turmas.getIndex')}}"><button>Início</button></a>
   <br><br>
   <form action="{{ url_for('turmas.adicionarTurma') }}" method="post">
     <label for="descricao">Descrição:</label><br>
